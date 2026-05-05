@@ -20,6 +20,11 @@ echo "  WSL2 detectado!"
 echo ""
 echo "  Configurando /etc/wsl.conf..."
 
+if [ -f /etc/wsl.conf ]; then
+  sudo cp /etc/wsl.conf "/etc/wsl.conf.backup.$(date +%Y%m%d%H%M%S)"
+  echo "  Backup do wsl.conf salvo"
+fi
+
 sudo tee /etc/wsl.conf > /dev/null << 'CONF'
 # ─────────────────────────────────────────
 # wsl.conf — gerado por dotfiles
@@ -49,6 +54,11 @@ WSLCONFIG="/mnt/c/Users/${WINDOWS_USER}/.wslconfig"
 
 if [ -n "$WINDOWS_USER" ]; then
   echo "  Configurando .wslconfig para user: $WINDOWS_USER..."
+
+  if [ -f "$WSLCONFIG" ]; then
+    cp "$WSLCONFIG" "$WSLCONFIG.backup.$(date +%Y%m%d%H%M%S)"
+    echo "  Backup do .wslconfig salvo"
+  fi
 
   cat > "$WSLCONFIG" << 'WSLCONF'
 # ─────────────────────────────────────────

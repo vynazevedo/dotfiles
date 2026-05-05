@@ -2,7 +2,7 @@
 # ─────────────────────────────────────────
 # git-boost.sh
 # Git aliases & productivity shortcuts
-# Author: Vinicius Azevedo <github.com/viniciusazevedo-mm>
+# Author: Vinicius Azevedo <github.com/vynazevedo>
 # ─────────────────────────────────────────
 
 set -e

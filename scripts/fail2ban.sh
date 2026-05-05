@@ -27,6 +27,11 @@ SSH_PORT="${SSH_PORT:-22}"
 # ─── Config ───────────────────────────────────────────────
 echo "  Configurando jails..."
 
+if [ -f /etc/fail2ban/jail.local ]; then
+  sudo cp /etc/fail2ban/jail.local "/etc/fail2ban/jail.local.backup.$(date +%Y%m%d%H%M%S)"
+  echo "  Backup do jail.local salvo"
+fi
+
 sudo tee /etc/fail2ban/jail.local > /dev/null << EOF
 # ─────────────────────────────────────────
 # Fail2ban config — gerado por dotfiles

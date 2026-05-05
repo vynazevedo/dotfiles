@@ -3,7 +3,7 @@
 # zsh-boost.sh
 # Zsh + Oh My Zsh + Powerlevel10k setup
 # Suporta: Ubuntu 22.04+, Ubuntu 24.04+, Kali Linux
-# Author: Vinicius Azevedo <github.com/viniciusazevedo-mm>
+# Author: Vinicius Azevedo <github.com/vynazevedo>
 # ─────────────────────────────────────────
 
 set -e

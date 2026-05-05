@@ -64,7 +64,7 @@
 Cada script roda direto via `curl` — instale só o que precisar:
 
 ```bash
-URL="https://raw.githubusercontent.com/viniciusazevedo-mm/dotfiles/main"
+URL="https://raw.githubusercontent.com/vynazevedo/dotfiles/main"
 ```
 
 ```
@@ -113,7 +113,7 @@ URL="https://raw.githubusercontent.com/viniciusazevedo-mm/dotfiles/main"
 Ou clone o repo:
 
 ```bash
-git clone https://github.com/viniciusazevedo-mm/dotfiles.git
+git clone https://github.com/vynazevedo/dotfiles.git
 ```
 
 ---
@@ -192,7 +192,7 @@ Usa **bloco gerenciado** no `.zshrc` — suas customizações são preservadas.
 
 ### aliases-extra.sh
 
-> *200+ atalhos para o dia a dia.*
+> *50+ atalhos e funções para o dia a dia.*
 
 ```
  ┌─ DESTAQUES ───────────────────────────────────────────┐
