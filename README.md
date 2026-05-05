@@ -24,11 +24,11 @@
 [![Shell Script](https://img.shields.io/badge/Shell_Script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=green)](https://www.gnu.org/software/bash/)
 [![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://www.linux.org/)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com/)
-[![Kali](https://img.shields.io/badge/Kali-268BEE?style=for-the-badge&logo=kalilinux&logoColor=white)](https://www.kali.org/)
+[![Kali](https://img.shields.io/badge/Kali_Linux-557C94?style=for-the-badge&logo=kalilinux&logoColor=white)](https://www.kali.org/)
 
-**20+ scripts to turn any Linux box into a productivity machine.** 🇬🇧
+**25+ scripts to turn any Linux box into a productivity machine.** 🇬🇧
 
-**20+ scripts para transformar qualquer Linux numa máquina de guerra.** 🇧🇷
+**25+ scripts para transformar qualquer Linux numa máquina de guerra.** 🇧🇷
 
 *Tested on Ubuntu 22.04+ / 24.04+, Kali Linux & WSL2.*
 
@@ -98,6 +98,14 @@ URL="https://raw.githubusercontent.com/vynazevedo/dotfiles/main"
  │  bash <(curl -fsSL $URL/scripts/fail2ban.sh)        # anti brute force   │
  │  bash <(curl -fsSL $URL/scripts/sysctl.sh)          # kernel tuning      │
  │  bash <(curl -fsSL $URL/scripts/pentest.sh)         # toolkit pentest    │
+ │  bash <(curl -fsSL $URL/scripts/gpg-yubikey.sh)     # GPG + YubiKey      │
+ │  bash <(curl -fsSL $URL/scripts/wazuh.sh)           # Wazuh SIEM agent   │
+ │  bash <(curl -fsSL $URL/scripts/yara.sh)            # YARA + rule sets   │
+ │                                                                           │
+ ├─ PRIVACIDADE & REDE ─────────────────────────────────────────────────────┤
+ │                                                                           │
+ │  bash <(curl -fsSL $URL/scripts/tor.sh)             # Tor + obfs4        │
+ │  bash <(curl -fsSL $URL/scripts/pi-hole.sh)         # Pi-hole + unbound  │
  │                                                                           │
  ├─ UTILITÁRIOS ────────────────────────────────────────────────────────────┤
  │                                                                           │
@@ -141,6 +149,11 @@ dotfiles/
     ├── aliases-extra.sh     # aliases de produtividade
     ├── wsl.sh               # otimizações WSL2
     ├── security-audit.sh    # auditoria de segurança
+    ├── gpg-yubikey.sh       # GPG + YubiKey + signed commits
+    ├── wazuh.sh             # Wazuh SIEM agent
+    ├── yara.sh              # YARA + rule sets curados
+    ├── tor.sh               # Tor + torsocks + obfs4
+    ├── pi-hole.sh           # Pi-hole + unbound DNS
     ├── system-info.sh       # dashboard do sistema
     ├── cleanup.sh           # limpeza do sistema
     └── backup.sh            # backup de configs
