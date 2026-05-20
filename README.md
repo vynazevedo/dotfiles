@@ -26,9 +26,9 @@
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com/)
 [![Kali](https://img.shields.io/badge/Kali_Linux-557C94?style=for-the-badge&logo=kalilinux&logoColor=white)](https://www.kali.org/)
 
-**25+ scripts to turn any Linux box into a productivity machine.** 🇬🇧
+**30+ scripts to turn any Linux box into a productivity machine.** 🇬🇧
 
-**25+ scripts para transformar qualquer Linux numa máquina de guerra.** 🇧🇷
+**30+ scripts para transformar qualquer Linux numa máquina de guerra.** 🇧🇷
 
 *Tested on Ubuntu 22.04+ / 24.04+, Kali Linux & WSL2.*
 
@@ -81,14 +81,20 @@ URL="https://raw.githubusercontent.com/vynazevedo/dotfiles/main"
  │                                                                           │
  ├─ LINGUAGENS ─────────────────────────────────────────────────────────────┤
  │                                                                           │
+ │  bash <(curl -fsSL $URL/scripts/mise.sh)            # version manager universal│
  │  bash <(curl -fsSL $URL/scripts/node.sh)            # NVM + Node LTS     │
+ │  bash <(curl -fsSL $URL/scripts/bun-deno.sh)        # Bun + Deno         │
  │  bash <(curl -fsSL $URL/scripts/golang.sh)          # Go + tools         │
  │  bash <(curl -fsSL $URL/scripts/rust.sh)            # Rust + cargo tools │
  │  bash <(curl -fsSL $URL/scripts/python.sh)          # pyenv + Python     │
  │                                                                           │
- ├─ DEVOPS ─────────────────────────────────────────────────────────────────┤
+ ├─ DEVOPS & CLOUD ─────────────────────────────────────────────────────────┤
  │                                                                           │
  │  bash <(curl -fsSL $URL/scripts/docker.sh)          # Docker CE + aliases│
+ │  bash <(curl -fsSL $URL/scripts/k8s.sh)             # kubectl + helm + k9s│
+ │  bash <(curl -fsSL $URL/scripts/terraform.sh)       # Terraform + tflint │
+ │  bash <(curl -fsSL $URL/scripts/ansible.sh)         # Ansible + lint     │
+ │  bash <(curl -fsSL $URL/scripts/cloud-cli.sh)       # AWS + GCP + Azure  │
  │  bash <(curl -fsSL $URL/scripts/network-tools.sh)   # ferramentas rede   │
  │                                                                           │
  ├─ SEGURANÇA ──────────────────────────────────────────────────────────────┤
@@ -135,11 +141,17 @@ dotfiles/
     ├── zsh.sh               # zsh + oh-my-zsh + p10k
     ├── neovim.sh            # neovim + lazy.nvim + LSP
     ├── tmux.sh              # tmux + TPM + tema hacker
-    ├── docker.sh            # docker CE + aliases
+    ├── mise.sh              # version manager universal
     ├── node.sh              # NVM + Node.js LTS + tools
+    ├── bun-deno.sh          # Bun + Deno (runtimes JS modernos)
     ├── golang.sh            # Go + ferramentas
     ├── rust.sh              # Rust + cargo tools
     ├── python.sh            # pyenv + Python + tools
+    ├── docker.sh            # docker CE + aliases
+    ├── k8s.sh               # kubectl + helm + k9s + kubectx
+    ├── terraform.sh         # Terraform + tflint + trivy
+    ├── ansible.sh           # Ansible + lint + skeleton
+    ├── cloud-cli.sh         # AWS + GCP + Azure CLIs
     ├── ssh-hardening.sh     # hardening do SSH server
     ├── firewall.sh          # UFW com profiles
     ├── fail2ban.sh          # proteção brute force
