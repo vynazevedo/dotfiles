@@ -15,7 +15,6 @@ if [ -f /etc/os-release ]; then
   # shellcheck disable=SC1091
   . /etc/os-release
   DISTRO_ID="${ID}"
-  DISTRO_VERSION="${VERSION_ID:-0}"
 else
   echo "Erro: /etc/os-release não encontrado."
   echo "Este script suporta apenas Ubuntu e Kali Linux."

@@ -9,8 +9,6 @@ set -e
 echo "cleanup — limpando sistema..."
 echo ""
 
-FREED=0
-
 bytes_to_human() {
   local bytes=$1
   if [ "$bytes" -ge 1073741824 ]; then
