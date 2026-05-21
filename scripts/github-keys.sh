@@ -194,25 +194,42 @@ if gh auth status &>/dev/null; then
 else
   echo ""
   echo "  Você precisa autenticar o gh. Abrindo gh auth login..."
-  echo "  (escolha GitHub.com > HTTPS ou SSH > autentique pelo browser)"
+  echo "  (escolha GitHub.com > autentique pelo browser)"
   echo ""
-  gh auth login
+  gh auth login --scopes "admin:public_key,admin:ssh_signing_key"
 fi
+
+# Garante os escopos necessários para cadastrar chaves
+ensure_gh_scope() {
+  local scope="$1"
+  if ! gh auth status 2>&1 | grep -q "$scope"; then
+    echo "  Escopo '$scope' ausente — solicitando via gh auth refresh..."
+    gh auth refresh -h github.com -s "$scope"
+  fi
+}
 
 # Auth key
 if gh auth status &>/dev/null; then
+  ensure_gh_scope "admin:public_key"
+
   echo "  Registrando chave de autenticação..."
-  gh ssh-key add "$KEY_PATH.pub" --title "$KEY_TITLE" 2>/dev/null && \
-    echo "  Chave de autenticação cadastrada!" || \
-    echo "  Aviso: chave pode já estar cadastrada ou faltam permissões (escopo admin:public_key)"
+  if gh ssh-key add "$KEY_PATH.pub" --title "$KEY_TITLE"; then
+    echo "  Chave de autenticação cadastrada!"
+  else
+    echo "  Aviso: falha ao cadastrar (pode já existir). Verifique com: gh ssh-key list"
+  fi
 
   # Signing key
   echo ""
   read -rp "  Configurar SSH commit signing (assinar commits)? (s/n): " SIGN
   if [[ "$SIGN" =~ ^[sS]$ ]]; then
-    gh ssh-key add "$KEY_PATH.pub" --type signing --title "$KEY_TITLE (signing)" 2>/dev/null && \
-      echo "  Chave de signing cadastrada no GitHub!" || \
-      echo "  Aviso: chave de signing pode já estar cadastrada."
+    ensure_gh_scope "admin:ssh_signing_key"
+
+    if gh ssh-key add "$KEY_PATH.pub" --type signing --title "$KEY_TITLE (signing)"; then
+      echo "  Chave de signing cadastrada no GitHub!"
+    else
+      echo "  Aviso: falha ao cadastrar chave de signing (pode já existir)."
+    fi
 
     # Git config para SSH signing
     git config --global gpg.format ssh
