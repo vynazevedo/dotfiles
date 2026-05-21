@@ -41,7 +41,10 @@ has_native_pkg() {
 echo ""
 echo "Instalando dependências..."
 sudo apt update -q
-sudo apt install -y zsh curl git unzip fontconfig
+sudo apt install -y zsh curl git unzip fontconfig locales
+
+# Garante o locale en_US.UTF-8 (exportado no .zshrc)
+sudo locale-gen en_US.UTF-8 2>/dev/null || true
 
 # ─── Oh My Zsh ────────────────────────────────────────────
 echo ""
@@ -50,7 +53,10 @@ echo "Instalando Oh My Zsh..."
 if [ -d "$HOME/.oh-my-zsh" ]; then
   echo "  Oh My Zsh já instalado, pulando..."
 else
-  RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  # --keep-zshrc impede o instalador de sobrescrever o ~/.zshrc
+  # com o template padrão (robbyrussell), que conflitaria com o
+  # bloco gerenciado deste script.
+  RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
 fi
 
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
@@ -186,15 +192,15 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Plugins
+# Plugins (zsh-syntax-highlighting precisa ser o último)
 plugins=(
   git
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  zsh-completions
   docker
   npm
   golang
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -280,6 +286,17 @@ fi
 } > "$ZSHRC.tmp" && mv "$ZSHRC.tmp" "$ZSHRC"
 
 echo "  .zshrc configurado (bloco gerenciado inserido)"
+
+# Detecta resíduo de versão antiga: config do OMZ duplicada abaixo
+# do bloco gerenciado (sobrescrevia o tema e os plugins).
+if sed -n "/$MARKER_END/,\$p" "$ZSHRC" | grep -q "oh-my-zsh.sh"; then
+  echo ""
+  echo "  AVISO: há config do Oh My Zsh ABAIXO do bloco gerenciado."
+  echo "  Isso é resíduo de uma versão antiga e quebra o tema/plugins."
+  echo "  Para corrigir (mantém só o bloco gerenciado):"
+  echo "    sed -i '/<<< zsh-boost managed block <<</q' ~/.zshrc"
+  echo "  O backup do .zshrc atual já foi salvo, então é seguro."
+fi
 
 # ─── Powerlevel10k hacker config ─────────────────────────
 echo ""
