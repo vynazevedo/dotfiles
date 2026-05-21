@@ -118,6 +118,7 @@ URL="https://raw.githubusercontent.com/vynazevedo/dotfiles/main"
  │                                                                           │
  │  bash <(curl -fsSL $URL/scripts/security-audit.sh)  # audit de segurança │
  │  bash <(curl -fsSL $URL/scripts/system-info.sh)     # dashboard sistema  │
+ │  bash <(curl -fsSL $URL/scripts/miller.sh)          # mlr — CSV/JSON/TSV │
  │  bash <(curl -fsSL $URL/scripts/cleanup.sh)         # limpeza sistema    │
  │  bash <(curl -fsSL $URL/scripts/backup.sh)          # backup configs     │
  │  bash <(curl -fsSL $URL/scripts/wsl.sh)             # otimizações WSL2   │
@@ -169,6 +170,7 @@ dotfiles/
     ├── tor.sh               # Tor + torsocks + obfs4
     ├── pi-hole.sh           # Pi-hole + unbound DNS
     ├── system-info.sh       # dashboard do sistema
+    ├── miller.sh            # Miller (mlr) — CSV/TSV/JSON
     ├── cleanup.sh           # limpeza do sistema
     └── backup.sh            # backup de configs
 ```
