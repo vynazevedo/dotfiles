@@ -88,6 +88,7 @@ URL="https://raw.githubusercontent.com/vynazevedo/dotfiles/main"
  │  bash <(curl -fsSL $URL/scripts/golang.sh)          # Go + tools         │
  │  bash <(curl -fsSL $URL/scripts/rust.sh)            # Rust + cargo tools │
  │  bash <(curl -fsSL $URL/scripts/python.sh)          # pyenv + Python     │
+ │  bash <(curl -fsSL $URL/scripts/android-dev.sh)     # Android SDK + Expo │
  │                                                                           │
  ├─ DEVOPS & CLOUD ─────────────────────────────────────────────────────────┤
  │                                                                           │
@@ -150,6 +151,7 @@ dotfiles/
     ├── golang.sh            # Go + ferramentas
     ├── rust.sh              # Rust + cargo tools
     ├── python.sh            # pyenv + Python + tools
+    ├── android-dev.sh       # Android SDK + emulador + Expo
     ├── docker.sh            # docker CE + aliases
     ├── k8s.sh               # kubectl + helm + k9s + kubectx
     ├── terraform.sh         # Terraform + tflint + trivy
